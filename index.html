@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+	<title>definitivo</title>
+	<script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+	<script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+	<script src="https://unpkg.com/aframe-animation-component@4.0.0/dist/aframe-animation-component.min.js"></script>
+	<script src="https://rawgit.com/ngokevin/aframe-look-at-component/master/dist/aframe-look-at-component.min.js"></script>
+	<script>
+		AFRAME.registerComponent('refresh-obj', {
+			init: function () {
+				this.el.addEventListener('click', function () {
+					var myGBcursor = document.querySelector('#myGBcursor');
+					myGBcursor.components.raycaster.refreshObjects();
+				});
+			}
+		});
+	</script>
+</head>
+
+<body>
+	<a-scene>
+
+	<!--assets-->
+	<a-assets>
+		<img id="bathroom" src="asset/Bathroom.jpg">
+		<img id="bathroom_icon" src="asset/bathroom_icon.jpg">
+		<img id="kitchen" src="asset/kitchen.jpg">
+		<img id="kitchen_icon" src="asset/kitchen_icon.jpg">
+		<img id="room1" src="asset/room1.jpg">
+		<img id="room1_icon" src="asset/room1_icon.jpg">
+		<img id="room2" src="asset/room2.jpg">
+		<img id="room2_icon" src="asset/room2_icon.jpg">
+		<img id="room3" src="asset/room3.jpg">
+		<img id="room3_icon" src="asset/room3_icon.jpg">
+		<img id="roomates_icon" src="asset/roomates.jpg">
+		<img id="menu" src="asset/menu.png">
+		<img id="close" src="asset/close.png">
+		<img id="feet" src="asset/feet.png">
+		<img id="rinaimg" src="asset/rina.png">
+		<a-asset-item id="sceneguy" src="asset/sceneguy/scene.gltf"></a-asset-item>
+			<a-asset-item id="scenegirl" src="asset/scene.gltf"></a-asset-item>
+		<a-audio id="rina" src="asset/rina2.mp3"></a-audio>
+		<a-audio id="rick" src="asset/rick.mp3"></a-audio>
+	</a-assets>
+		<!-- Camera -->
+		<a-camera id="cam">
+			<a-entity id="myGBcursor"
+					  cursor="fuse: true; fuseTimeout: 1000" position="0 0 -1"
+					  geometry="primitive: ring; radiusOuter: 0.03; radiusInner: 0.02; thetaLength: 360; thetaStart: 90;"
+					  material="color: #ffff00; shader: flat; opacity: 0.5"
+					  raycaster="objects: .clickable">
+					  <a-animation attribute="scale"
+					  			   to="3 3 3"
+					  			   dur="1000"
+					  			   begin="cursor-fusing"
+					  			   fill="backwards"
+					  			   easing="linear">
+					  </a-animation>
+					  
+			</a-entity>
+		</a-camera>
+
+<!--icona menu-->
+<a-entity position="0 0 -0.024" rotation="-90.0116 0 0" class="clickable"
+event-set__enternav="_event:click;_target:#nav;visible:true"
+event-set__clicknav="_event:click;_target:#nav;position:0.065 3.235 -5.373"
+event-set__skychange="_event:click;_target:#sky;material.color:#232B2B"
+>
+	<a-image src="#menu"></a-image>
+</a-entity>   
+	<!--imagini menu-->
+	<a-entity  
+	visible="false" 
+	id="nav" 
+	position="0.065 200.235 -5.373" 
+	rotation="0 -2.005 0" 
+	scale="2 2 2"
+	look-at="#cam"
+	>
+		<a-box  
+		id="bathroom_icon1"
+		src="#bathroom_icon" 
+		width="1" height="0.75" depth="0.05" 
+		position="1.058 0 0" 
+		class="clickable"
+		
+	    event-set__gobath="_event:click;_target:#sky;src:#bathroom"
+		event-set__hidenav="_event:click;_target:#nav;visible:false"
+		event-set__stopclicknav="_event:click;_target:#nav;position:0.065 200.235 -5.373"
+		event-set__skychange="_event:click;_target:#sky;material.color:#FFFFFF"
+		event-set__prova="_event:click;_target:#sky;material.color:#FFFFFF"
+		event-set__tiziaclear="_event:click;_target:#tipa;position:44.05 -360.836 71.432"
+        event-set__tizia2clear="_event:click;_target:#tipad;position:44.05 -1000.836 71.432"
+        event-set__tizioclear="_event:click;_target:#tipo;position:44.05 -360.836 71.432"
+        event-set__tizio2clear="_event:click;_target:#tipod;position:44.05 -1000.836 71.432"
+       
+        event-set__hover2="_event:mouseenter;position:1.058 0 0.2"
+        event-set__hoverleave2="_event:mouseleave;;position:1.058 0 0">
+			
+	    </a-box>
+		<a-box src="#kitchen_icon" width="1" height="0.75" position="-1.061 0 0" depth="0.05" 
+		class="clickable"
+		event-set__gokitchen="_event:click;_target:#sky;src:#kitchen"
+		event-set__hidenav="_event:click;_target:#nav;visible:false"
+		event-set__stopclicknav="_event:click;_target:#nav;position:0.065 200.235 -5.373"
+		event-set__skychange="_event:click;_target:#sky;material.color:#FFFFFF"
+		event-set__tiziaclear="_event:click;_target:#tipa;position:44.05 -360.836 71.432"
+        event-set__tizia2clear="_event:click;_target:#tipad;position:44.05 -1000.836 71.432"
+        event-set__tizioclear="_event:click;_target:#tipo;position:44.05 -360.836 71.432"
+        event-set__tizio2clear="_event:click;_target:#tipod;position:44.05 -1000.836 71.432"
+         event-set__hover23="_event:mouseenter;position:-1.061 0 0.2"
+        event-set__hoverleave23="_event:mouseleave;;position:-1.061 0 0"
+
+        ></a-box>
+		<a-box src="#room1_icon" width="1" height="0.75" position="0 -0.814 0" depth="0.05" 
+		class="clickable"
+		event-set__goroom1="_event:click;_target:#sky;src:#room1"
+		event-set__hidenav="_event:click;_target:#nav;visible:false"
+		event-set__stopclicknav="_event:click;_target:#nav;position:0.065 200.235 -5.373"
+		event-set__skychange="_event:click;_target:#sky;material.color:#FFFFFF"
+		event-set__tiziaclear="_event:click;_target:#tipa;position:44.05 -360.836 71.432"
+        event-set__tizia2clear="_event:click;_target:#tipad;position:44.05 -1000.836 71.432"
+        event-set__tizioclear="_event:click;_target:#tipo;position:44.05 -360.836 71.432"
+        event-set__tizio2clear="_event:click;_target:#tipod;position:44.05 -1000.836 71.432"
+                event-set__hover23="_event:mouseenter;position:0 -0.814 0.2"
+        event-set__hoverleave23="_event:mouseleave;;position:0 -0.814 0"
+        ></a-box>
+		<a-box src="#room2_icon" width="1" height="0.75" position="1.061 -0.815 0" depth="0.05" 
+		class="clickable"
+		event-set__goroom2="_event:click;_target:#sky;src:#room2"
+		event-set__hidenav="_event:click;_target:#nav;visible:false"
+		event-set__stopclicknav="_event:click;_target:#nav;position:0.065 200.235 -5.373"
+		event-set__skychange="_event:click;_target:#sky;material.color:#FFFFFF"
+		event-set__tizio="_event:click;_target:#tipo;position:-212.904 -100.836 -70.296"
+        event-set__tizio2="_event:click;_target:#tipod;position:60 -53 75"
+        event-set__tiziaclear="_event:click;_target:#tipa;position:44.05 -360.836 71.432"
+        event-set__tizia2clear="_event:click;_target:#tipad;position:44.05 -1000.836 71.432"
+         event-set__hover23="_event:mouseenter;position:1.061 -0.815 0.2"
+        event-set__hoverleave23="_event:mouseleave;;position:1.061 -0.815 0"
+
+        ></a-box>
+		<a-box src="#room3_icon" width="1" height="0.75" position="-0.002 0 0" depth="0.05" 
+		class="clickable"
+		event-set__goroom3="_event:click;_target:#sky;src:#room3"
+		event-set__hidenav="_event:click;_target:#nav;visible:false"
+		event-set__stopclicknav="_event:click;_target:#nav;position:0.065 200.235 -5.373"
+		event-set__skychange="_event:click;_target:#sky;material.color:#FFFFFF"
+        event-set__tizia="_event:click;_target:#tipa;position:44.05 -36.836 71.432"
+        event-set__tizia2="_event:click;_target:#tipad;position:44.05 -100.836 71.432"
+        event-set__tizioclear="_event:click;_target:#tipo;position:44.05 -360.836 71.432"
+        event-set__tizio2clear="_event:click;_target:#tipod;position:44.05 -1000.836 71.432"
+        event-set__hover23="_event:mouseenter;position:-0.002 0 0.2"
+        event-set__hoverleave23="_event:mouseleave;;position:-0.002 0 0"
+		></a-box>
+		<a-box src="#roomates_icon" width="1" height="0.75" position="-1.07 -0.814 0" depth="0.05" 
+		class="clickable"
+		event-set__goroom3="_event:click;_target:#sky;src:#room3"
+		event-set__hidenav="_event:click;_target:#nav;visible:false"
+		event-set__stopclicknav="_event:click;_target:#nav;position:0.065 200.235 -5.373"
+		event-set__skychange="_event:click;_target:#sky;material.color:#FFFFFF"
+		event-set__tizio="_event:click;_target:#tipo;position:-212.904 -100.836 -70.296"
+        event-set__tizio2="_event:click;_target:#tipod;position:60 -53 75"
+         event-set__tizia="_event:click;_target:#tipa;position:44.05 -36.836 71.432"
+        event-set__tizia2="_event:click;_target:#tipad;position:44.05 -100.836 71.432"
+        event-set__hover23="_event:mouseenter;position:-1.07 -0.814 0.2"
+        event-set__hoverleave23="_event:mouseleave;;position:-1.07 -0.814 0"
+        >
+        	 
+        </a-box>
+
+	</a-entity>
+<!--box guarda ai tuoi piedi-->
+<a-box id="piedi"src="#feet" position="0 1.8 -2" depth="0.01"></a-box>
+<a-entity src="#close" id="closepiedi"position="0 2.5 -1.98" scale="0.5 0.5 0.5" class="clickable"
+event-set__stoppiedi="_event:click;_target:#piedi;position:0.065 230.235 -5.373"
+event-set__stoppiedi2="_event:click;position:0.065 230.235 -5.373"
+event-set__stoppiedi3="_event:click;_target:#imgclosepiedi;position:0.065 230.235 -5.373"
+>
+	<a-image id="imgclosepiedi"src="#close" ></a-image>
+</a-entity>
+
+<a-sky id="sky"src="#kitchen"></a-sky>
+
+<!--tizia che spawna-->
+<a-entity id="tipa"class="clickable" sound="src:#rina;on:click;volume:15"
+position="44.05 -360.836 71.432"
+event-set__audiorina="_event:click;_target:#rina;sound:on"
+event-set__rotate="_target: #tipad; _event: click;
+                   
+                    
+                    
+                    animation.property: rotation;
+                   animation.from: 6.5 -146.6 -2.6;
+                   animation.to: 7.1 -146.6 2.6;
+                   animation.easing: easeInOutElastic;
+                   animation.dur: 3000;
+                   animation.dir: alternate;
+                   animation.loop:5"
+                   event-set__skychange="_event:click;_target:#sky;material.color:	#3b444b"
+>
+<a-entity id="tipad" gltf-model="asset/scene.gltf" scale="30 30 30" position="44.05 -1000.836 71.432" rotation="6.5 -146.6 -2.6">
+	
+</a-entity>
+</a-entity>
+<a-entity id="tipo"class="clickable" sound="src:#rick;on:click;volume:15"
+position="-212.904 -1000.836 -70.296"
+event-set__audiorina="_event:click;_target:#rina;sound:on;"
+event-set__stopaudiosky="_event:mouseleave;_target:#sky;color:#FFFFFF"
+event-set__rotate="_target: #tipod; _event: click;
+                   
+                    
+                    
+                    animation.property: rotation;
+                   animation.from: 2 90 -2.6;
+                   animation.to: 3.1 90 2.6;
+                   animation.easing: easeInOutElastic;
+                   animation.dur: 3000;
+                   animation.dir: alternate;
+                   animation.loop:5"
+                   event-set__skychange="_event:click;_target:#sky;material.color:	#3b444b"
+>
+<a-entity id="tipod" gltf-model="asset/sceneguy/scene.gltf" scale="30 30 30" position="60 -1053 75" rotation="2 9000 -2.6">
+	
+</a-entity>
+</a-entity>
+
+	
+		
+	
+
+		
+	</a-scene>
+</body>
+</html>
