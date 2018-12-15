@@ -16,6 +16,14 @@
 			}
 		});
 	</script>
+	</script>
+	<script>AFRAME.registerComponent("mylink", {
+  init: function() {
+    this.el.addEventListener("click", (e)=> {
+       window.location = this.data.href;
+    })
+  }
+})</script>
 </head>
 
 <body>
@@ -155,7 +163,8 @@ event-set__skychange="_event:click;_target:#sky;material.color:#232B2B"
 		></a-box>
 		<a-box src="#roomates_icon" width="1" height="0.75" position="-1.07 -0.814 0" depth="0.05" 
 		class="clickable"
-		event-set__goroom3="_event:click;_target:#sky;src:#room3"
+		       myLink="href:https://uo4g3z.axshare.com/#g=1&p=focus_page"
+		
 		event-set__hidenav="_event:click;_target:#nav;visible:false"
 		event-set__stopclicknav="_event:click;_target:#nav;position:0.065 200.235 -5.373"
 		event-set__skychange="_event:click;_target:#sky;material.color:#FFFFFF"
